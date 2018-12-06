@@ -6,7 +6,7 @@ export class AuthService {
     loginUser(userName: string, password: string) {
             this.currentUser = {
                 id: 1,
-                firstName: userName,
+                firstName: 'John',
                 lastName: 'Papa',
                 userName: userName
             };
@@ -14,5 +14,10 @@ export class AuthService {
 
     isAuthenticated() {
         return !!this.currentUser;
+    }
+
+    updateCurrentUser(firstName: string, lastName: string) {
+         this.currentUser.firstName = firstName;
+         this.currentUser.lastName = lastName;
     }
 }

@@ -4,13 +4,17 @@
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
     <div class="form-group" >
       <label for="userName">User Name:</label>
-      <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
-      <input (ngModel)="username"  name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..." />
+      <em *ngIf="usernamevar?.invalid && (usernamevar?.touched || mouseoverLogin)">Required. Plese enter username!</em>
+      <input #usernamevar="ngModel" (ngModel)="username"  name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..." />
     </div>
     <div class="form-group" >
       <label for="password">Password:</label>
-      <em *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
-      <input (ngModel)="password" name="password" required id="password" type="password" class="form-control"placeholder="Password..." />
+      <em *ngIf="userpasswordvar?.invalid && (userpasswordvar?.touched || mouseoverLogin)">
+        <span *ngIf="userpasswordvar?.errors.required"> Required. Please enter user password!</span>
+        <span *ngIf="userpasswordvar?.errors.minlength">The password must be longer than 3 character</span>
+      </em>
+      <input #userpasswordvar="ngModel" (ngModel)="password" name="password" required minlength="3" id="password" type="password" class="form-control"placeholder="Password..." />
+     
     </div>
     <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">    
     <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>

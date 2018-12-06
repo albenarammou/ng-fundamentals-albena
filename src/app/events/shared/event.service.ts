@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { IEvent } from './event.model';
+import { EventsAppComponent } from 'src/app/events-app.component';
 @Injectable()
 export class EventService {
     getEvents(): Observable<IEvent[]> {
@@ -10,6 +11,11 @@ export class EventService {
     }
     getEvent(id: number): IEvent {
         return EVENTS.find(event => event.id === id);
+    }
+    saveEvent(event) {
+      event.id = '9999';
+      event.session = [];
+      EVENTS.push(event);
     }
 }
 const  EVENTS: IEvent[] = [
