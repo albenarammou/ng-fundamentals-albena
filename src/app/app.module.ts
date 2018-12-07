@@ -11,7 +11,8 @@ import {
     CreateSessionComponent,
     CreateEventComponent,
     EventRouteActivator,
-    EventListResolver
+    EventListResolver,
+    SessionListComponent
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -21,15 +22,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 
-/*
-import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail.component';
-import { EventService } from './events/shared/event.service';
-import { EventDetailsComponent } from './events/events-details/event-details.component';
-import { CreateEventComponent} from './events/shared/create-event.component';
-import { EventRouteActivator } from './events/events-details/event-route-activator.service';
-import { EventListResolver } from './events/shared/events-list-resolver.service';
-*/
+
 @NgModule({
   declarations: [
     EventsAppComponent,
@@ -39,7 +32,8 @@ import { EventListResolver } from './events/shared/events-list-resolver.service'
     NavBarComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [BrowserModule,
             FormsModule,
