@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../user/auth.service';
+import { ISession } from '../events/shared/event.model';
+import { EventService } from  '../events/index';
+import { $ } from 'protractor';
 @Component({
 selector: 'app-nav-bar',
-templateUrl: './nav-bar.component.html',
+templateUrl: './navbar.component.html',
 styles: [`
     nav.navbar-nav{font-size:15px;}
     #searchForm {margin-right:100px;}
@@ -11,5 +14,12 @@ styles: [`
 `]
 })
 export class NavBarComponent {
-constructor(public auth: AuthService) {}
+    searchTerm: string="";
+    foundSessions: ISession;
+    constructor(public auth: AuthService, private eventService: EventService) {
+       
+    }
+    searchSession(searchTerm){
+        this.eventService.searchSession(searchTerm).subscribe(sessions=>{this.foundSessions=sessions; console.log('searching - ',this.foundSessions);})
+    }
 }
