@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from '../user/auth.service';
 import { ISession } from '../events/shared/event.model';
 import { EventService } from  '../events/index';
-import { $ } from 'protractor';
 @Component({
 selector: 'app-nav-bar',
 templateUrl: './navbar.component.html',
@@ -20,6 +19,6 @@ export class NavBarComponent {
        
     }
     searchSession(searchTerm){
-        this.eventService.searchSession(searchTerm).subscribe(sessions=>{this.foundSessions=sessions; console.log('searching - ',this.foundSessions);})
+        this.eventService.searchSession(searchTerm).subscribe(sessions=>{this.foundSessions=sessions;})
     }
 }
